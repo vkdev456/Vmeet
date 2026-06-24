@@ -3,18 +3,16 @@ package com.example.backend.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-
 @Entity
+@Table(name="users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Id;
-
+    private Long Id;
 
     @NotNull
     private String name;
-    
     
     @NotNull
     private String username;
@@ -22,19 +20,17 @@ public class User {
     @NotNull
     private String password;
 
-   
     @NotNull
     private String token;
-
 
     public User(){}
 
 
-    public String getId(){
+    public Long getId(){
         return Id;
     }
 
-    public void SetId(String id){
+    public void SetId(Long id){
         this.Id=id;
     }
 
