@@ -4,27 +4,18 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 
 @Valid
-public class RegisterDto {
+public class LoginDto {
 
     @NotBlank
-    private String name;
+    String username;
 
     @NotBlank
-    private String username;
+    String password;
 
-    @NotBlank
-    private String password;
+    public LoginDto(){
 
-    public RegisterDto(){
-        
     }
     
-    public String getName(){
-         return name;
-    }
-    public void setName(String name){
-        this.name=name;
-    }
     public String getUsername() {
         return username;
     }
@@ -40,5 +31,11 @@ public class RegisterDto {
     public void setPassword(String password) {
         this.password = password;
     }
+
+   
+
+    
+
+
     
 }
