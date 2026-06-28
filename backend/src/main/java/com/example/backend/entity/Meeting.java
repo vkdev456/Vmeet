@@ -1,8 +1,10 @@
 package com.example.backend.entity;
 
 import java.time.LocalDate;
-
+<<<<<<< Updated upstream
 import jakarta.annotation.*;
+=======
+>>>>>>> Stashed changes
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +16,7 @@ public class Meeting {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private String Id;
+    private Long Id;
 
     @NotNull
     private String userId;
@@ -24,7 +26,18 @@ public class Meeting {
 
     @NotNull
     private LocalDate date;
+ 
+    public Meeting(){
 
+    }
+
+    public Long getId(){
+        return Id;
+    }
+
+    public void setId(Long Id){
+         this.Id=Id;
+    }
 
     public String getUserId() {
         return userId;

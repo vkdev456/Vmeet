@@ -3,18 +3,25 @@ package com.example.backend.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-
 @Entity
+<<<<<<< Updated upstream
+@Table(name="users")
+=======
+@Table(name = "users")
+>>>>>>> Stashed changes
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String Id;
+<<<<<<< Updated upstream
+    private Long Id;
+=======
+    private Long id;
 
+>>>>>>> Stashed changes
 
     @NotNull
     private String name;
-    
     
     @NotNull
     private String username;
@@ -22,20 +29,31 @@ public class User {
     @NotNull
     private String password;
 
-   
+<<<<<<< Updated upstream
     @NotNull
+=======
+   
+  
+>>>>>>> Stashed changes
     private String token;
-
 
     public User(){}
 
 
-    public String getId(){
+    public Long getId(){
+<<<<<<< Updated upstream
         return Id;
     }
 
-    public void SetId(String id){
+    public void SetId(Long id){
         this.Id=id;
+=======
+        return id;
+    }
+
+    public void SetId(Long id){
+        this.id=id;
+>>>>>>> Stashed changes
     }
 
     public String getName() {
