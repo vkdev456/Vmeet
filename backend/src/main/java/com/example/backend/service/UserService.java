@@ -16,6 +16,9 @@ public class UserService {
     @Autowired
     RegisterationRepo regRepo;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     public void Register(RegisterDto registerDto) {
 
         // user already exist
@@ -29,20 +32,27 @@ public class UserService {
 
         user.setName(registerDto.getName());
         user.setUsername(registerDto.getUsername());
-        user.setPassword(registerDto.getPassword());
+        user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
 
         regRepo.save(user);
 
     }
 
-    public boolean login(LoginDto login){
-        
-        String username=login.getUsername();
-        if(regRepo.existsByUsername(username)){
-            return true;
-        }else{
-            throw new RuntimeException("User doesnot Exist please login");
+    public boolean login(LoginDto login) {
+
+        Optional<User> user = regRepo.findByUsername(login.getUsername());
+
+        if (user.isEmpty()) {
+            throw new RuntimeException("Invalid username or password");
         }
+
+        User dbUser = user.get();
+
+        if (!passwordEncoder.matches(login.getPassword(), dbUser.getPassword())) {
+            throw new RuntimeException("Invalid username or password");
+        }
+
+        return true;
     }
 
 }

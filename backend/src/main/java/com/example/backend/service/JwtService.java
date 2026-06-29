@@ -1,0 +1,34 @@
+package com.example.backend.service;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
+
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+import java.util.Date;
+
+@Service
+public class JwtService {
+
+    @Value("${jwt.secret}")
+    private String secret;
+
+    @Value("${jwt.expiration}")
+    private long expiration;
+
+
+    private final Key key = Keys.hmacShaKeyFor(
+            secret.getBytes(StandardCharsets.UTF_8));
+
+    public String generateToken(String username) {
+
+        return Jwts.builder()
+                .subject(username)
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+                .signWith(key)
+                .compact();
+    }
+}

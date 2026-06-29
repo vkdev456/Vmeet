@@ -18,17 +18,7 @@ public class RegisterDto {
     public RegisterDto(){
         
     }
-<<<<<<< HEAD
-
-    public RegisterDto(String name, String username, String password){
-        this.name=name;
-        this.username=username;
-        this.password=password;
-    }
-
-=======
     
->>>>>>> signup-login
     public String getName(){
          return name;
     }
