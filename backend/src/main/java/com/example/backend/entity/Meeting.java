@@ -1,10 +1,6 @@
 package com.example.backend.entity;
 
 import java.time.LocalDate;
-<<<<<<< Updated upstream
-import jakarta.annotation.*;
-=======
->>>>>>> Stashed changes
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
