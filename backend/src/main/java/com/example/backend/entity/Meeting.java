@@ -1,6 +1,7 @@
 package com.example.backend.entity;
 
 import java.time.LocalDate;
+>>>>>>> main
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

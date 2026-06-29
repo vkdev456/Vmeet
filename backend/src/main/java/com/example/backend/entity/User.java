@@ -9,8 +9,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
     private Long id;
-
 
     @NotNull
     private String name;
@@ -21,12 +21,9 @@ public class User {
     @NotNull
     private String password;
 
-   
-  
     private String token;
 
     public User(){}
-
 
     public Long getId(){
         return id;
@@ -34,6 +31,12 @@ public class User {
 
     public void SetId(Long id){
         this.id=id;
+        return Id;
+    }
+
+    public void SetId(Long id){
+        this.Id=id;
+
     }
 
     public String getName() {
