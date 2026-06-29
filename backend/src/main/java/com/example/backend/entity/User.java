@@ -9,7 +9,6 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
     private Long id;
 
     @NotNull
@@ -31,12 +30,6 @@ public class User {
 
     public void SetId(Long id){
         this.id=id;
-        return Id;
-    }
-
-    public void SetId(Long id){
-        this.Id=id;
-
     }
 
     public String getName() {

@@ -1,8 +1,11 @@
 package com.example.backend.service;
 
+import java.util.Optional;
+
 import javax.management.RuntimeErrorException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.backend.dto.LoginDto;
