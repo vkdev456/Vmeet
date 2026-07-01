@@ -19,6 +19,9 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
+    private JwtService jwtService;
+
     public void Register(RegisterDto registerDto) {
 
         // user already exist
@@ -38,7 +41,7 @@ public class UserService {
 
     }
 
-    public boolean login(LoginDto login) {
+    public String login(LoginDto login) {
 
         Optional<User> user = regRepo.findByUsername(login.getUsername());
 
@@ -52,7 +55,7 @@ public class UserService {
             throw new RuntimeException("Invalid username or password");
         }
 
-        return true;
+        return jwtService.generateToken(dbUser.getUsername());
     }
 
 }

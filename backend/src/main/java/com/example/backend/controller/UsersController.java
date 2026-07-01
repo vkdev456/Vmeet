@@ -1,5 +1,7 @@
 package com.example.backend.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.backend.dto.LoginDto;
 import com.example.backend.dto.RegisterDto;
+import com.example.backend.service.JwtService;
 import com.example.backend.service.UserService;
 import jakarta.validation.Valid;
 
@@ -14,14 +17,23 @@ import jakarta.validation.Valid;
 public class UsersController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
     
+    @Autowired
+    private JwtService jwtService;
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginDto login){
 
         try {
             userService.login(login);
-            return ResponseEntity.status(HttpStatus.OK).body("Login Successfull");
+            String token = userService.login(login);
+            // return ResponseEntity.ok(token);
+            return ResponseEntity.status(HttpStatus.OK).body( Map.of(
+        "message", "Login Successful",
+        "token", token
+        ));
+
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }

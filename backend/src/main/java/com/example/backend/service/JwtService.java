@@ -19,16 +19,17 @@ public class JwtService {
     private long expiration;
 
 
-    private final Key key = Keys.hmacShaKeyFor(
-            secret.getBytes(StandardCharsets.UTF_8));
+    private Key getSigningKey() {
+        return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+    } 
 
     public String generateToken(String username) {
 
         return Jwts.builder()
                 .subject(username)
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
-                .signWith(key)
+                .expiration(new Date(System.currentTimeMillis() + expiration))
+                .signWith(getSigningKey())
                 .compact();
     }
 }
