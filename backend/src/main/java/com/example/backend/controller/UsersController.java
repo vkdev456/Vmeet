@@ -1,24 +1,18 @@
 package com.example.backend.controller;
 
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.config.RepositoryNameSpaceHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.example.backend.dto.LoginDto;
 import com.example.backend.dto.RegisterDto;
 import com.example.backend.service.JwtService;
 import com.example.backend.service.UserService;
-
 import jakarta.validation.Valid;
-
 import com.example.backend.dto.RegisterDto;
-
-
 import jakarta.validation.Valid;
 
 @RestController
@@ -27,9 +21,7 @@ public class UsersController {
 
     @Autowired
     private UserService userService;
-    
-    @Autowired
-    private JwtService jwtService;
+
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginDto login){
