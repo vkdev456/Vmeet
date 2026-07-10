@@ -14,6 +14,8 @@ public class SocketIOConfig {
 
         config.setHostname("0.0.0.0");
         config.setPort(8000);
+        
+        config.setOrigin("*");
 
         return new SocketIOServer(config);
     }

@@ -3,9 +3,7 @@ package com.example.backend.websocket;
 public class ChatMessage {
 
     private String sender;
-
     private String data;
-
     private String socketIdSender;
 
     public ChatMessage() {
