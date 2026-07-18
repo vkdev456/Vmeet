@@ -5,7 +5,7 @@ import type { SignupRequest } from "../../models/SignupRequest";
 
 export default function Authentication() {
 
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const [name, setName]=useState("");
@@ -16,12 +16,12 @@ export default function Authentication() {
 
         const request:SignupRequest={
             name,
-            email,
+            username,
             password
         };
 
-        const reponse=await signup(request);
-        console.log(reponse);
+        const response=await signup(request);
+        console.log(response);
 
         }catch(error){
            console.error(error);
@@ -34,18 +34,20 @@ export default function Authentication() {
         <div className="authcontainer">
               
             <div className="signup">
-              <h2 className="text-center ">Signup</h2>
+                <h2 className="text-center ">Signup</h2>
               
                 <div className="mb-2">
-                    <label className="form-label">Email</label>
-                    <input id='enteremail' type="email" className="form-control" placeholder="Enter Email"
-                     onChange={(e)=>setEmail(e.target.value)}
+                    <label className="form-label">Username</label>
+                    <input id='username' type="text" className="form-control" placeholder="Enter username"
+                     value={username}
+                     onChange={(e)=>setUsername(e.target.value)}
                     /> 
                 </div> 
 
                 <div className="mb-2">
                     <label className="form-label">Name</label>
                     <input id='name' type="text" className="form-control" placeholder="Name"
+                     value={name}
                      onChange={(e)=>setName(e.target.value)}
                     /> 
                 </div> 
