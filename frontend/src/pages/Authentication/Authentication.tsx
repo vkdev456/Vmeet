@@ -22,6 +22,7 @@ export default function Authentication() {
 
         const response=await signup(request);
         console.log(response);
+        
 
         }catch(error){
            console.error(error);
@@ -59,7 +60,7 @@ export default function Authentication() {
                     />
                 </div>
 
-                <button  className="btn btn-primary w-100" onClick={handleSignup}>Login</button>
+                <button  className="btn btn-primary w-100" onClick={handleSignup}>Signup</button>
            </div>
            
         </div>
