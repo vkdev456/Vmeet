@@ -5,3 +5,4 @@ export interface SignupRequest{
     password: string;
     
 }
+
